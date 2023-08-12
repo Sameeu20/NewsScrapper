@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>News Aggregator</title>
+</head>
+
+<body>
+    <!-- ... -->
+<form method="get" action="{% url 'index' %}">
+    <input type="text" name="topic" placeholder="Enter topic">
+    <input type="date" name="date_from">
+    <input type="date" name="date_to">
+    <input type="text" name="location" placeholder="Enter location">
+    <button type="submit">Search</button>
+</form>
+<!-- ... -->
+
+    <h1>News Aggregator</h1>
+    <ul>
+        {% for article in articles %}
+        <li>
+            <h2>{{ article.title }}</h2>
+            <p>{{ article.description }}</p>
+            <p>Source: {{ article.source }}</p>
+            <p>Date: {{ article.publication_date }}</p>
+            <p>Location: {{ article.location }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
