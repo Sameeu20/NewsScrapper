@@ -6,22 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>News Aggregator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+        }
+        .card-container{
+            font-family: Georgia, serif;
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            max-width:400px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- ... -->
-<form method="get" action="{% url 'index' %}">
-    <input type="text" name="topic" placeholder="Enter topic">
-    <input type="date" name="date_from">
-    <input type="date" name="date_to">
-    <input type="text" name="location" placeholder="Enter location">
-    <button type="submit">Search</button>
-</form>
+    <div class="container" style="margin-top: 50px;">
+        <h3 class="center-align">News Scrapper</h3>
+        <div class="row">
+            <form method="get" action="{% url 'index' %}" class="col s12" id="search-form">
+                <div class="row">
+                <div class="input-field col s12 m4">
+                    <input type="text" name="topic" placeholder="Enter topic">
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="date" name="date_from">
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="date" name="date_to">
+                </div>
+                <div class="input-field col s12 m4">
+                    <input type="text" name="location" placeholder="Enter location">
+                    <button type="submit">Search</button>
+                </div>
+            </div>
+            </form>
+            
+    </div>
+</div>
 <!-- ... -->
 
     <h1>News Aggregator</h1>
     <ul>
-        {% for article in articles %}
+        
+        <div class="card-container">
+            {% for article in articles %}
         <li>
             <h2>{{ article.title }}</h2>
             <p>{{ article.description }}</p>
@@ -30,6 +62,12 @@
             <p>Location: {{ article.location }}</p>
         </li>
         {% endfor %}
+    </div>
+        
     </ul>
+
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </body>
 </html>
